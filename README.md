@@ -30,3 +30,10 @@ A simple yet effective **console-based Java application** for logging and viewin
 ```bash
 javac LostAndFoundApp.java
 java LostAndFoundApp
+
+
+📁 LostFoundPortal
+├── Item.java             # Item model (name, desc, location, reporter, status)
+├── LostAndFoundApp.java  # Main class with menu and logic
+├── items.txt             # Storage file for all logged items
+
