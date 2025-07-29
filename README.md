@@ -25,12 +25,9 @@ A simple yet effective **console-based Java application** for logging and viewin
 - Java JDK 17 or above
 - Any Java IDE (IntelliJ, Eclipse, VS Code) or command-line tools
 
-### Run the Program
 
-```bash
-javac LostAndFoundApp.java
-java LostAndFoundApp
 
+### Structure
 
 📁 LostFoundPortal
 ├── Item.java             # Item model (name, desc, location, reporter, status)
