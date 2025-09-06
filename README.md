@@ -99,9 +99,6 @@ LostAndFound/
 └── lib/ # Dependencies (e.g., mysql-connector-java.jar)
 
 
-
-
-
 ---
 
 ## 🗄️ Database Schema  
@@ -114,6 +111,20 @@ CREATE TABLE users (
     email VARCHAR(100) UNIQUE,
     password VARCHAR(255)
 );
+
+CREATE TABLE lost_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    description TEXT,
+    location VARCHAR(255),
+    lost_date DATE,
+    image_path VARCHAR(255),
+    owner_id INT,
+    claimed BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (owner_id) REFERENCES users(id)
+);
+
+
 
 
 
