@@ -1,36 +1,122 @@
-# 🎒 Lost & Found Portal – Java Console App
+# 📦 Lost & Found Web Application
 
-![Java](https://img.shields.io/badge/Java-17%2B-red?logo=java&logoColor=white)
-![OOP](https://img.shields.io/badge/Concepts-OOP%2C%20File%20I%2FO-blue)
-![Platform](https://img.shields.io/badge/Platform-Console-brightgreen)
-![Status](https://img.shields.io/badge/Status-Completed-green)
+![Java](https://img.shields.io/badge/Java-17+-blue.svg)
+![MySQL](https://img.shields.io/badge/MySQL-8.0+-orange.svg)
+![Tomcat](https://img.shields.io/badge/Apache_Tomcat-9+-red.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-A simple yet effective **console-based Java application** for logging and viewing lost or found items in your campus or community. Uses **Object-Oriented Programming** and **File Handling** to store and retrieve entries.
-
----
-
-## 📌 Features
-
-- 📝 Add lost or found items
-- 📂 View all entries
-- 🔍 Filter by status (Lost / Found)
-- 💾 Stores data persistently in a text file (`items.txt`)
-- 🧱 Built with clean OOP structure
+A Java-based web platform to help users report and find **lost** and **found** items within a community (e.g., college campus). Users can register, upload item details with images, browse a gallery of unclaimed items, and connect via **Claim** and **Found** actions.
 
 ---
 
-## 🚀 Getting Started
+## 📋 Table of Contents
 
-### Prerequisites
-- Java JDK 17 or above
-- Any Java IDE (IntelliJ, Eclipse, VS Code) or command-line tools
+- [Overview](#-overview)
+- [Features](#-features)
+- [Tech Stack](#%EF%B8%8F-tech-stack)
+- [Project Structure](#-project-structure)
+- [Database Schema](#%EF%B8%8F-database-schema)
+- [Workflow](#-workflow)
+- [UI Preview](#-ui-preview)
+- [Setup & Run](#%EF%B8%8F-setup--run)
+  - [DBConnection.java Template](#dbconnectionjava-template)
+- [Future Improvements](#-future-improvements)
+- [Contributing](#-contributing)
+- [License](#-license)
+
+---
+
+## 📌 Overview
+
+The **Lost & Found Web Application** is a user-friendly platform designed to streamline the process of reporting and recovering lost or found items. Built with Java Servlets and MySQL, it allows users to:
+- Register and log in securely.
+- Report lost or found items with descriptions and images.
+- Browse a gallery of unclaimed items.
+- Connect with others to claim or return items.
+
+This project is ideal for communities like universities, offices, or neighborhoods to manage lost and found items efficiently.
+
+---
+
+## 🚀 Features
+
+- 🔐 **User Authentication**: Secure registration and login with session management.
+- 📋 **Lost Item Upload**: Report lost items with details (name, description, location, date) and images.
+- 🧾 **Found Item Upload**: Report found items with similar details and images.
+- 🖼 **Gallery View**: Browse all unclaimed lost and found items in a single view.
+- 🔍 **Search & Filters**: Filter items by name, location, or date.
+- 📩 **Claim & Found System**: Connect with item owners/finders via email.
+- ✅ **Claim Status**: Mark items as claimed to remove them from the gallery.
+- 📱 **Responsive Design**: Mobile-friendly UI with Bootstrap and custom CSS.
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+- HTML, CSS (`style.css`), Bootstrap
+- JSP (JavaServer Pages) for dynamic rendering
+
+**Backend:**
+- Java Servlets (running on Apache Tomcat)
+- JDBC for MySQL database connectivity
+
+**Database:**
+- MySQL
+
+**Other:**
+- File upload support for item images
+- Session management for user authentication
+
+---
+
+## 📂 Project Structure
+LostAndFound/
+│
+├── src/ # Java backend
+│ ├── db/DBConnection.java
+│ ├── model/User.java
+│ ├── servlet/RegisterServlet.java
+│ ├── servlet/LoginServlet.java
+│ ├── servlet/LostItemServlet.java
+│ ├── servlet/FoundItemServlet.java
+│ ├── servlet/ClaimServlet.java
+│ └── servlet/FoundServlet.java
+│
+├── WebContent/ # Frontend
+│ ├── index.jsp
+│ ├── style.css
+│ ├── images/
+│ ├── forms/
+│ │ ├── login.jsp
+│ │ ├── register.jsp
+│ │ ├── Lostitem.jsp
+│ │ ├── Founditems.jsp
+│ │ └── Gallery.jsp
+│
+└── WEB-INF/
+├── web.xml # Servlet mappings
+└── lib/ # Dependencies (e.g., mysql-connector-java.jar)
 
 
 
-### Structure
 
-📁 LostFoundPortal
-├── Item.java             # Item model (name, desc, location, reporter, status)
-├── LostAndFoundApp.java  # Main class with menu and logic
-├── items.txt             # Storage file for all logged items
+
+---
+
+## 🗄️ Database Schema  
+
+### Users  
+```sql
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(255)
+);
+
+
+
+
+
 
