@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap & CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+  <title>Found Item Form</title>
+
+  <!-- Background styling -->
+  <style>
+    body {
+      background: url("../images/background1.png") repeat center center fixed;
+      background-size: cover;
+      font-family: 'Montserrat', sans-serif;
+    }
+    section, footer, nav {
+      background: rgba(255, 255, 255, 0.13);
+      border-radius: 12px;
+      margin: 10px;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- ✅ Navbar -->
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+    <a class="navbar-brand grow" href="../index.html">LostandFound</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item grow"><a class="nav-link" href="../index.html">Home</a></li>
+        <li class="nav-item grow"><a class="nav-link" href="lostForm.html">Lost</a></li>
+        <li class="nav-item grow active"><a class="nav-link" href="foundForm.html">Found</a></li>
+        <li class="nav-item grow"><a class="nav-link" href="Gallery.html">Gallery</a></li>
+        <li class="nav-item grow"><a class="nav-link" href="contactus.html">Contact Us</a></li>
+      </ul>
+      <a href="register.html"><i class="fas fa-user signin grow"> SignIn</i></a>
+    </div>
+  </nav>
+
+  <!-- ✅ Found Form Section -->
+  <main>
+    <section class="container mt-5">
+      <h2 class="title text-center mb-4">Report Found Item</h2>
+      <form class="p-4 shadow-lg rounded bg-light" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="foundName">Found Item Name</label>
+          <input type="text" class="form-control" id="foundName" placeholder="Enter item name" required>
+        </div>
+        <div class="form-group">
+          <label for="foundDesc">Description</label>
+          <textarea class="form-control" id="foundDesc" rows="4" placeholder="Describe the found item" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="foundDate">Date Found</label>
+          <input type="date" class="form-control" id="foundDate" required>
+        </div>
+        <div class="form-group">
+          <label for="foundLocation">Where It Was Found</label>
+          <input type="text" class="form-control" id="foundLocation" placeholder="e.g. Library, Hostel, Canteen" required>
+        </div>
+        <div class="form-group">
+          <label for="foundImage">Upload Image</label>
+          <input type="file" class="form-control-file" id="foundImage" accept="image/*">
+        </div>
+        <button type="submit" class="btn btn-dark">Submit Found Report</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- ✅ Footer -->
+  <footer id="page-footer" class="py-0 bg-black">
+    <div class="brand"><a class="navbar-brand" href="#">gotLost</a></div>
+    <div class="copyright">
+      <small><span>Copyright &copy;</span> <span>All Rights Reserved</span>
+      <span>Terms of Use</span> and <span>Privacy Policy</span></small>
+    </div>
+    <br><hr>
+    <div class="favicon">
+      <i class="social-media fab fa-facebook-f fa-2x"></i>
+      <i class="social-media fab fa-twitter fa-2x"></i>
+      <i class="social-media fab fa-instagram fa-2x"></i>
+      <i class="social-media fas fa-envelope fa-2x"></i>
+    </div>
+    <div class="BackToTop">
+      <a id="back-to-top" href="#"><i class="back fas fa-chevron-up fa-2x"></i></a>
+      <h4>Back To Top</h4>
+    </div>
+  </footer>
+
+  <!-- ✅ JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
