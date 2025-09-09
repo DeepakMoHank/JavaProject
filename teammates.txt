@@ -1,5 +1,5 @@
 Team 
-1.Ahalya Madhavan 
-2.Arya MG
-3.Deepak Mohan k k
-4.Devika
+1.Ahalya Madhavan -8
+2.Arya MG=13
+3.Deepak Mohan k k-20
+4.Devika 23
