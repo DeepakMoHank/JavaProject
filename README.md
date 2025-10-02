@@ -1,129 +1,123 @@
-# 📦 Lost & Found Web Application
+# 🕵️ Lost & Found Web Application
 
-![Java](https://img.shields.io/badge/Java-17+-blue.svg)
-![MySQL](https://img.shields.io/badge/MySQL-8.0+-orange.svg)
-![Tomcat](https://img.shields.io/badge/Apache_Tomcat-9+-red.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
+A simple **Lost & Found Portal** built using:
+- **Frontend:** HTML, CSS, JavaScript  
+- **Backend:** Java (Spring Boot, REST API)  
+- **Database:** MySQL  
 
-A Java-based web platform to help users report and find **lost** and **found** items within a community (e.g., college campus). Users can register, upload item details with images, browse a gallery of unclaimed items, and connect via **Claim** and **Found** actions.
-
----
-
-## 📋 Table of Contents
-
-- [Overview](#-overview)
-- [Features](#-features)
-- [Tech Stack](#%EF%B8%8F-tech-stack)
-- [Project Structure](#-project-structure)
-- [Database Schema](#%EF%B8%8F-database-schema)
-- [Workflow](#-workflow)
-- [UI Preview](#-ui-preview)
-- [Setup & Run](#%EF%B8%8F-setup--run)
-  - [DBConnection.java Template](#dbconnectionjava-template)
-- [Future Improvements](#-future-improvements)
-- [Contributing](#-contributing)
-- [License](#-license)
-
----
-
-## 📌 Overview
-
-The **Lost & Found Web Application** is a user-friendly platform designed to streamline the process of reporting and recovering lost or found items. Built with Java Servlets and MySQL, it allows users to:
-- Register and log in securely.
-- Report lost or found items with descriptions and images.
-- Browse a gallery of unclaimed items.
-- Connect with others to claim or return items.
-
-This project is ideal for communities like universities, offices, or neighborhoods to manage lost and found items efficiently.
-
----
-
-## 🚀 Features
-
-- 🔐 **User Authentication**: Secure registration and login with session management.
-- 📋 **Lost Item Upload**: Report lost items with details (name, description, location, date) and images.
-- 🧾 **Found Item Upload**: Report found items with similar details and images.
-- 🖼 **Gallery View**: Browse all unclaimed lost and found items in a single view.
-- 🔍 **Search & Filters**: Filter items by name, location, or date.
-- 📩 **Claim & Found System**: Connect with item owners/finders via email.
-- ✅ **Claim Status**: Mark items as claimed to remove them from the gallery.
-- 📱 **Responsive Design**: Mobile-friendly UI with Bootstrap and custom CSS.
-
----
-
-## 🛠️ Tech Stack
-
-**Frontend:**
-- HTML, CSS (`style.css`), Bootstrap
-- JSP (JavaServer Pages) for dynamic rendering
-
-**Backend:**
-- Java Servlets (running on Apache Tomcat)
-- JDBC for MySQL database connectivity
-
-**Database:**
-- MySQL
-
-**Other:**
-- File upload support for item images
-- Session management for user authentication
+Users can add lost/found items, view existing posts, and search items.
 
 ---
 
 ## 📂 Project Structure
-LostAndFound/
-│
-├── src/ # Java backend
-│ ├── db/DBConnection.java
-│ ├── model/User.java
-│ ├── servlet/RegisterServlet.java
-│ ├── servlet/LoginServlet.java
-│ ├── servlet/LostItemServlet.java
-│ ├── servlet/FoundItemServlet.java
-│ ├── servlet/ClaimServlet.java
-│ └── servlet/FoundServlet.java
-│
-├── WebContent/ # Frontend
-│ ├── index.jsp
+LostAndFoundApp_Final/
+│── frontend/ # Static Frontend Files
+│ ├── index.html
+│ ├── lost.html
+│ ├── found.html
 │ ├── style.css
-│ ├── images/
-│ ├── forms/
-│ │ ├── login.jsp
-│ │ ├── register.jsp
-│ │ ├── Lostitem.jsp
-│ │ ├── Founditems.jsp
-│ │ └── Gallery.jsp
+│ └── script.js
 │
-└── WEB-INF/
-├── web.xml # Servlet mappings
-└── lib/ # Dependencies (e.g., mysql-connector-java.jar)
+│── backend/ # Spring Boot Backend
+│ ├── src/
+│ │ ├── main/
+│ │ │ ├── java/com/example/lostandfound/
+│ │ │ │ ├── LostAndFoundApplication.java
+│ │ │ │ ├── model/Item.java
+│ │ │ │ ├── repository/ItemRepository.java
+│ │ │ │ └── controller/ItemController.java
+│ │ │ └── resources/
+│ │ │ ├── application.properties
+│ │ │ └── static/ (optional for frontend serving)
+│ │
+│ └── pom.xml
+│
+└── README.md
 
+yaml
+Copy code
 
 ---
 
-## 🗄️ Database Schema  
+## ⚙️ Setup Instructions
 
-### Users  
-```sql
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(100) UNIQUE,
-    password VARCHAR(255)
-);
+### 1. Install Prerequisites
+- [Java JDK 17+](https://adoptium.net/)  
+- [Maven](https://maven.apache.org/)  
+- [MySQL](https://dev.mysql.com/downloads/)  
 
-CREATE TABLE lost_items (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255),
-    description TEXT,
-    location VARCHAR(255),
-    lost_date DATE,
-    image_path VARCHAR(255),
-    owner_id INT,
-    claimed BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (owner_id) REFERENCES users(id)
-);
+### 2. Create MySQL Database
+Login to MySQL:
+```sh
+mysql -u root -p
+Then run:
 
+sql
+Copy code
+CREATE DATABASE lostfounddb;
+3. Configure Database
+Edit backend/src/main/resources/application.properties:
+
+properties
+Copy code
+spring.datasource.url=jdbc:mysql://localhost:3306/lostfounddb
+spring.datasource.username=your_mysql_username
+spring.datasource.password=your_mysql_password
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+Replace your_mysql_username and your_mysql_password with your credentials.
+
+4. Run the Backend
+Go to the backend folder and start the Spring Boot app:
+
+sh
+Copy code
+cd backend
+mvn spring-boot:run
+The server will start at:
+
+arduino
+Copy code
+http://localhost:8080
+5. Run the Frontend
+Open frontend/index.html in your browser.
+The frontend communicates with the backend APIs via http://localhost:8080/api/items.
+
+📡 API Endpoints
+GET /api/items → Get all items
+
+POST /api/items → Add a new item (JSON body)
+
+GET /api/items/{id} → Get item by ID
+
+DELETE /api/items/{id} → Delete an item
+
+Example POST body:
+
+json
+Copy code
+{
+  "name": "Laptop",
+  "description": "Black Dell laptop",
+  "location": "Library",
+  "status": "lost"
+}
+🚀 Future Improvements
+Add authentication (users login before posting)
+
+Allow image uploads
+
+Advanced search & filters
+
+👨‍💻 Author
+Developed as a Lost & Found Portal Project using Java + MySQL + Web Frontend.
+
+yaml
+Copy code
+
+---
+
+👉 Do you want me to also **update the frontend `script.js`** so it can directly call the backend API (`/api/items`) for adding & fetching items?
 
 
 
