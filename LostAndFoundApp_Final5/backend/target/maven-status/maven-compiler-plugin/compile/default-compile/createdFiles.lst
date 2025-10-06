@@ -1,0 +1,4 @@
+com/lostfound/LostFoundApplication.class
+com/lostfound/repository/ItemRepository.class
+com/lostfound/controller/ItemController.class
+com/lostfound/model/Item.class
